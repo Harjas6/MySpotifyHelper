@@ -1,15 +1,18 @@
 import os
-from pprint import pprint
-
 from dotenv import load_dotenv
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
 # Getting user specific details from env
 load_dotenv()
+# You can copy all the cod in the file and switch values to work for your account.
+# Go to https://developer.spotify.com and log in.
+# Then register an app and get the below fields to copy into this code
 CLIENT_ID = os.getenv('SPOTIPY_CLIENT_ID')
 CLIENT_SECRET = os.getenv('SPOTIPY_CLIENT_SECRET')
-REDIRECT_URI = os.getenv('SPOTIPY_REDIRECT_URI')
+# Can be any valid website
+REDIRECT_URI = 'https://github.com/Harjas6'
+# Is your user-ID
 USERNAME = os.getenv('USERNAME')
 # Here because I had a very large playlist and API calls only do 100 songs at a time
 # Adjust for size of playlist
