@@ -3,11 +3,9 @@ from dotenv import load_dotenv
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
+# Instructions for use in README.md file
 # Getting user specific details from env
 load_dotenv()
-# You can copy all the cod in the file and switch values to work for your account.
-# Go to https://developer.spotify.com and log in.
-# Then register an app and get the below fields to copy into this code
 CLIENT_ID = os.getenv('SPOTIPY_CLIENT_ID')
 CLIENT_SECRET = os.getenv('SPOTIPY_CLIENT_SECRET')
 # Can be any valid website
