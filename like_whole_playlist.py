@@ -68,7 +68,7 @@ def delete_all_songs(spotify, id, offset):
     tracks = make_list_of_song_uri(id=id, spotify=spotify, offset=offset)
     for chunk in chunker(tracks, 50):
         spotify.current_user_saved_tracks_delete(chunk)
-    print("Songs Liked!")
+    print("Songs Unsaved!")
 
 
 # Adds all songs from playlist id to liked songs without creating duplicates
@@ -96,8 +96,8 @@ def make_list_of_song_uri(id, spotify, offset):
 
 
 # Asks to add or delete songs
-def add_or_delete(id, offset, spotify):
-    ans = input("Add or Delete all songs to/from saved songs [A/D] ").lower()
+def add_or_delete(id, offset, spotify, name):
+    ans = input(f"Add or Delete all songs from {name} to/from saved songs [A/D] ").lower()
     if ans == "d":
         delete_all_songs(spotify=spotify, id=id, offset=offset)
     elif ans == "a":
@@ -111,11 +111,16 @@ def main():
     offset = 0
     auth, spotify = create_spotify()
     while True:
-        name = input("Enter name of playlist: ")
+        name = input("To quit press enter with no other characters inputted.\nEnter name of playlist: ")
         id = find_playlist(name, spotify)
-        if id is not None:
-            add_or_delete(id, offset, spotify)
+        if name == '':
+            print('\nThanks for using this script!\nCheck out my github at https://github.com/Harjas6')
             break
+        if id is not None:
+            add_or_delete(id, offset, spotify,name)
+        else: print("Playlist not found")
+
+
 
 
 main()
